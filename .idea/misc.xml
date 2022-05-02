@@ -59,12 +59,13 @@
         <entry key="app/src/main/res/layout/activity_food_register.xml" value="0.250164794921875" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2369720458984375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24308929443359376" />
+        <entry key="app/src/main/res/layout/activity_menu.xml" value="0.24270833333333333" />
         <entry key="app/src/main/res/layout/activity_menu_fatch.xml" value="0.22314814814814815" />
         <entry key="app/src/main/res/layout/activity_oner_main.xml" value="0.22314814814814815" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.22314814814814815" />
         <entry key="app/src/main/res/layout/activity_review.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/activity_slide_image_viewer.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_store_setting.xml" value="0.109375" />
+        <entry key="app/src/main/res/layout/activity_store_setting.xml" value="0.18864898681640624" />
         <entry key="app/src/main/res/layout/dialog_btn.xml" value="0.22314814814814815" />
         <entry key="app/src/main/res/layout/dialog_btn_store.xml" value="0.109375" />
         <entry key="app/src/main/res/layout/food_list.xml" value="0.23743589743589744" />
@@ -74,6 +75,7 @@
         <entry key="app/src/main/res/layout/review_list.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/store_list.xml" value="0.23743589743589744" />
         <entry key="app/src/main/res/menu/menu_login.xml" value="0.20997314453125004" />
+        <entry key="app/src/main/res/menu/menu_logout.xml" value="0.14583333333333334" />
       </map>
     </option>
   </component>

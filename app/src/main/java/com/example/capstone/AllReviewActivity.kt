@@ -30,8 +30,8 @@ class AllReviewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_all_review)
 
         recyclerView_review = findViewById(R.id.recyclerview_review)
-        val foodId = intent?.getIntExtra("food_id",0)
-        Log.d("food_id", "$foodId")
+        val foodId = intent?.getStringExtra("foodId")?.toInt()
+        Log.d("foodId", "$foodId")
         if (foodId != null) {
             getReviewList(foodId)
         }

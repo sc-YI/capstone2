@@ -23,3 +23,7 @@ data class VerifyCode(
 data class MemberResponse(
     @SerializedName("id") val id: Int
     )
+
+data class BusinessMemberResponse(
+    @SerializedName("id") val id: Int
+)

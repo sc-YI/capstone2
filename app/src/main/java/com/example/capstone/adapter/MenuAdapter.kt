@@ -15,7 +15,7 @@ import com.example.capstone.R
 import com.example.capstone.ReviewActivity
 import com.example.capstone.review.MyDialog
 
-class MenuAdapter(private val foods: Array<Menu.Data.FoodListDto>, private val context: Context) : RecyclerView.Adapter<MenuAdapter.ViewHolder> () {
+class MenuAdapter(private val foods: List<Menu.Data.FoodListDto>, private val context: Context) : RecyclerView.Adapter<MenuAdapter.ViewHolder> () {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater
@@ -26,7 +26,6 @@ class MenuAdapter(private val foods: Array<Menu.Data.FoodListDto>, private val c
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val menuName: TextView = itemView.findViewById(R.id.menu_name)
-        val menuDetail: TextView = itemView.findViewById(R.id.menu_detail)
         val menuImg: ImageView = itemView.findViewById(R.id.menu_img)
         val menuRating: TextView = itemView.findViewById(R.id.rating)
         val menuPrice: TextView = itemView.findViewById(R.id.menu_price)
@@ -43,7 +42,6 @@ class MenuAdapter(private val foods: Array<Menu.Data.FoodListDto>, private val c
         Log.d("recyclerview ", "${items.name}/${items.price}/${items.status}")
         holder.menuName.text = items?.name
         holder.menuPrice.text = items?.price
-        holder.menuDetail.text = items?.introduce
         holder.menuRating.text = 3.0.toString()
         holder.menuImg.setImageResource(R.drawable.ic_launcher_background)
 

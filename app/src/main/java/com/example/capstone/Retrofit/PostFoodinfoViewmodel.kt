@@ -8,15 +8,15 @@ import com.example.capstone.Retrofit.PostFoodinfoServiceCreator
 import com.example.capstone.data.MemberInfo
 import com.example.capstone.data.Menu
 import com.example.capstone.data.MenuPostBody
+import okhttp3.MultipartBody
 
 class PostFoodinfoViewmodel: ViewModel()  {
 
     val foodClient : PostFoodinfoServiceCreator
+    lateinit var foodpostContent : LiveData<Int>
+    lateinit var foodpatchContent : LiveData<Int>
 
-    lateinit var foodId : LiveData<Menu.Data.FoodListDto>
-    lateinit var foodContent : LiveData<Menu.Data.FoodListDto>
-
-
+    lateinit var postedImagesId : LiveData<List<Int>>
 
 
     init {
@@ -24,9 +24,19 @@ class PostFoodinfoViewmodel: ViewModel()  {
     }
 
 
-    fun postFood(token:String, id:Int, foodBody: Menu.Data.FoodListDto){
+    fun postFood(token:String, foodBody: Menu.Data.FoodListDto){
         Log.d("food post", "실행")
-        foodContent = foodClient.requestMenuInfo(token,id,foodBody)
+        foodpostContent = foodClient.requestMenuInfo(token,foodBody)
+    }
+
+   fun patchFood(token:String, id:Int ,foodBody: Menu.Data.FoodListDto)
+    {
+        Log.d("food patch", "실행")
+        foodpatchContent = foodClient.patchMenu(token,id,foodBody)
+    }
+
+    fun postFoodPhotos(token: String, id:Int, files:List<MultipartBody.Part>){
+        postedImagesId = foodClient.postPhotos(token, id, files)
     }
 
     fun deleteMenu(token:String, id:Int){

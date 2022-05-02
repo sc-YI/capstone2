@@ -36,36 +36,12 @@ class PostFoodinfoServiceCreator {
         client = retrofit.create(RetrofitMenu::class.java)
     }
 
-    fun getMentContent(id:Int) : LiveData<Menu.Data> {
-
-        val liveData = MutableLiveData<Menu.Data>()
-        val call = client.requestFoodData(id)
-
-        call.enqueue(object : Callback<Menu> {
-            override fun onFailure(call: Call<Menu>, t: Throwable) {
-                Log.e("error", "${t.message}")
-            }
-
-            override fun onResponse(call: Call<Menu>, response: Response<Menu>) {
-                if(response.isSuccessful){
-                    Log.d("응답 성공!", "onResponse is Successful!")
-                    val body = response.body()
-                    liveData.value = body?.data
-                }
-                else {
-                    Log.e("응답 실패", "response is not Successful")
-                }
-            }
-        })
-        return  liveData
-    }
 
 
+    fun requestMenuInfo(token:String,menuBody:Menu.Data.FoodListDto): LiveData<Int> {
 
-    fun requestMenuInfo(token:String, id:Int,menuBody:Menu.Data.FoodListDto): LiveData<Menu.Data.FoodListDto> {
-
-        val liveData = MutableLiveData<Menu.Data.FoodListDto>()
-        val call = client.post_foods(token, id, menuBody)
+        val liveData = MutableLiveData<Int>()
+        val call = client.post_foods(token, menuBody)
 
         call.enqueue(object: Callback<Menu.Data.FoodListDto> {
             override fun onFailure(call: Call<Menu.Data.FoodListDto>, t: Throwable) {
@@ -78,11 +54,14 @@ class PostFoodinfoServiceCreator {
                 if(response.isSuccessful){
                     Log.d("foodlist success!", "onResponse is Successful!")
                     val body = response.body()
-                    liveData.value = body!!
+                    liveData.value = body?.id!!
                     Log.d("내 닉네임은 ", "${liveData.value}")
                 }
                 else {
                     Log.e("foodlist fail", "response is not Successful")
+                    Log.e("foodlist fail", "${response.code()}")
+                    Log.e("errorBody() is ", response.errorBody()!!.string())
+                    liveData.value = -1
                 }
             }
         })
@@ -133,5 +112,36 @@ class PostFoodinfoServiceCreator {
         })
         return liveData
     }
+
+    fun patchMenu(token:String,id: Int,menuBody:Menu.Data.FoodListDto): LiveData<Int> {
+
+        val liveData = MutableLiveData<Int>()
+        val call = client.patch_foods(token, id ,menuBody)
+
+        call.enqueue(object: Callback<Menu.Data.FoodListDto> {
+            override fun onFailure(call: Call<Menu.Data.FoodListDto>, t: Throwable) {
+                Log.e("foodlist error", "${t.message}")
+            }
+            override fun onResponse(
+                call: Call<Menu.Data.FoodListDto>,
+                response: Response<Menu.Data.FoodListDto>
+            ) {
+                if(response.isSuccessful){
+                    Log.d("foodpatch success!", "onResponse is Successful!")
+                    val body = response.body()
+                    liveData.value = body?.id!!
+                    Log.d("내 닉네임은 ", "${liveData.value}")
+                }
+                else {
+                    Log.e("foodpatch fail", "response is not Successful")
+                    Log.e("foodpatch fail", "${response.code()}")
+                    liveData.value = -1
+                }
+            }
+        })
+        return liveData
+
+    }
+
 }
 

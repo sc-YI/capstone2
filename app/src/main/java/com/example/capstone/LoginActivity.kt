@@ -43,15 +43,17 @@ class LoginActivity : AppCompatActivity() {
         onerbtn = findViewById(R.id.onerBtn)
         onerCheckBox = findViewById(R.id.onerCheck)
 
-        onerbtn.setOnClickListener{
-            val intent = Intent(this, OnerMainActivity::class.java)
-            startActivity(intent)
-        }
+
 
         registerButton.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+        onerbtn.setOnClickListener {
+            val intent = Intent(this, OnerMainActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
         loginButton.setOnClickListener {
@@ -67,14 +69,15 @@ class LoginActivity : AppCompatActivity() {
                         Utility.focusEditText(this,loginPw)
                     }
                     else -> {
-                        if (!onerCheckBox.isChecked){
-                            loginProcess()
-                            showToastMsg("로그인 되었습니다.")
-                        }
-                        else{
+                        if (onerCheckBox.isChecked){
                             OnerloginProcess()
+                            showToastMsg("사장님 로그인 되었습니다.")
                             val intent = Intent(this, OnerMainActivity::class.java)
                             startActivity(intent)
+                            }
+                        else{
+                            loginProcess()
+                            showToastMsg("로그인 되었습니다.")
                         }
 
                     }
@@ -109,7 +112,7 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun OnerloginProcess(){
         viewModel.requestOnerLogin(loginId.text.toString(), loginPw.text.toString())
-        viewModel.onertoken.observe(this,
+        viewModel.token.observe(this,
             {
                 when (it) {
                     "not registered email" -> {
@@ -126,11 +129,10 @@ class LoginActivity : AppCompatActivity() {
                     else -> { //토큰을 정상적으로 받았을 때.
                         App.prefs.token = it
                         App.nowLogin = true
+                        Log.d("로그인", "${App.prefs.token}")
                         Log.d("토큰 값 ", "${it}")
                         showToastMsg("로그인 성공")
-
-                        intent = Intent(this, OnerMainActivity::class.java)
-                        startActivity(intent)
+                        finish()
                     }
                 }
             })

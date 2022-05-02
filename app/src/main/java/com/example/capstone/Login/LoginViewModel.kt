@@ -12,7 +12,7 @@ class LoginViewModel : ViewModel() {
     lateinit var memberInfo : LiveData<MemberInfo>
 
     val oner : OnerLoginServiceCreator
-    lateinit var onertoken : LiveData<String>
+    //lateinit var onertoken : LiveData<String>
 
 
     init {
@@ -30,6 +30,6 @@ class LoginViewModel : ViewModel() {
     }
 
     fun requestOnerLogin(email:String,password:String){
-        onertoken = oner.requestOnerLogin(email,password)
+        token = oner.requestOnerLogin(email,password)
     }
 }

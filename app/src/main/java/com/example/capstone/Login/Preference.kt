@@ -12,6 +12,7 @@ class Preference(context: Context) {
         set(value){
             loginPreference.edit().putString("token",value).apply()
         }
+
     var autoLogin:Boolean?
         get() = loginPreference.getBoolean("autoLogin",false)
         set(value) {

@@ -8,33 +8,25 @@
     app:cardCornerRadius="30dp"
     tools:context=".Oner.OnerMainActivity">
 
-    <androidx.cardview.widget.CardView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_height="60dp"
+        tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/myStoreTxt"
-            android:layout_width="match_parent"
+            android:id="@+id/review_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
             android:text="나의 가게"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="30sp"
             android:textStyle="bold" />
-    </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp">
+        android:layout_height="126dp">
 
         <LinearLayout
             android:id="@+id/myStoreLayout"

@@ -4,12 +4,11 @@ data class Menu(
     val `data`: Data
 ) {
     data class Data(
-        val foodListDtoList: Array<FoodListDto>,
+        val foodListDtoList: List<FoodListDto>,
         val foodOrigin: String,
         val name: String,
         val phoneNumber: String
     )
-
     {
         data class FoodListDto(
             val id: Int?,

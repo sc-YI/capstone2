@@ -13,6 +13,16 @@ data class StoreData(
     )
 }
 
+data class StoreDataPost(
+    val `data`: List<Data>
+
+){
+    data class Data(
+        @SerializedName("name") val name:String,
+        @SerializedName("introduce") val introduce: String
+    )
+}
+
 
 
 
