@@ -44,6 +44,7 @@ class FoodAdapter(private val context: Context): RecyclerView.Adapter<foodHolder
         holder.setMenu(menu)
 
 
+
         holder.itemView.setOnClickListener(){
             val foodId = menu?.id
             Log.d("음식 아이디", "${foodId}")
@@ -118,7 +119,6 @@ class FoodAdapter(private val context: Context): RecyclerView.Adapter<foodHolder
                        }
 
                 }
-
             })
         }
 
@@ -155,6 +155,8 @@ class foodHolder(val binding: FoodListBinding): RecyclerView.ViewHolder(binding.
                 .into(binding.menuImg)
 
         }
+
     }
+
 
 }
